@@ -23,7 +23,7 @@ applicable agreement for further details.
 	(input)
 	(rect 136 160 304 176)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "I[15..0]" (rect 5 0 41 12)(font "Arial" ))
+	(text "I[15..0]" (rect 5 0 40 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -232,6 +232,22 @@ applicable agreement for further details.
 	(rect 576 1144 752 1160)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "WrB[1..0]" (rect 90 0 137 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 600 1288 796 1304)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "IMM_EXTEND[15..0]" (rect 90 0 190 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -916,6 +932,28 @@ applicable agreement for further details.
 		(arc (pt 31 37)(pt 30 12)(rect 18 12 43 37))
 	)
 )
+(symbol
+	(rect 384 1264 560 1360)
+	(text "extend10to16" (rect 5 0 82 14)(font "Arial" (font_size 8)))
+	(text "inst1" (rect 8 80 31 92)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "input[9..0]" (rect 0 0 55 14)(font "Arial" (font_size 8)))
+		(text "input[9..0]" (rect 21 27 76 41)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 176 32)
+		(output)
+		(text "output[15..0]" (rect 0 0 70 14)(font "Arial" (font_size 8)))
+		(text "output[15..0]" (rect 85 27 155 41)(font "Arial" (font_size 8)))
+		(line (pt 176 32)(pt 160 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 160 80))
+	)
+)
 (connector
 	(pt 304 168)
 	(pt 328 168)
@@ -1251,6 +1289,17 @@ applicable agreement for further details.
 	(text "WrB[0]" (rect 487 1192 521 1204)(font "Arial" ))
 	(pt 464 1208)
 	(pt 528 1208)
+	(bus)
+)
+(connector
+	(pt 560 1296)
+	(pt 600 1296)
+	(bus)
+)
+(connector
+	(text "I[9..0]" (rect 328 1280 357 1292)(font "Arial" ))
+	(pt 384 1296)
+	(pt 320 1296)
 	(bus)
 )
 (junction (pt 496 280))

@@ -47,6 +47,22 @@ jpnz <= jpnz~0.DB_MAX_OUTPUT_PORT_TYPE
 ALUO[0] <= ALUO~2.DB_MAX_OUTPUT_PORT_TYPE
 ALUO[1] <= ALUO~1.DB_MAX_OUTPUT_PORT_TYPE
 ALUO[2] <= ALUO~0.DB_MAX_OUTPUT_PORT_TYPE
+IMM[0] <= IMM~15.DB_MAX_OUTPUT_PORT_TYPE
+IMM[1] <= IMM~14.DB_MAX_OUTPUT_PORT_TYPE
+IMM[2] <= IMM~13.DB_MAX_OUTPUT_PORT_TYPE
+IMM[3] <= IMM~12.DB_MAX_OUTPUT_PORT_TYPE
+IMM[4] <= IMM~11.DB_MAX_OUTPUT_PORT_TYPE
+IMM[5] <= IMM~10.DB_MAX_OUTPUT_PORT_TYPE
+IMM[6] <= IMM~9.DB_MAX_OUTPUT_PORT_TYPE
+IMM[7] <= IMM~8.DB_MAX_OUTPUT_PORT_TYPE
+IMM[8] <= IMM~7.DB_MAX_OUTPUT_PORT_TYPE
+IMM[9] <= IMM~6.DB_MAX_OUTPUT_PORT_TYPE
+IMM[10] <= IMM~5.DB_MAX_OUTPUT_PORT_TYPE
+IMM[11] <= IMM~4.DB_MAX_OUTPUT_PORT_TYPE
+IMM[12] <= IMM~3.DB_MAX_OUTPUT_PORT_TYPE
+IMM[13] <= IMM~2.DB_MAX_OUTPUT_PORT_TYPE
+IMM[14] <= IMM~1.DB_MAX_OUTPUT_PORT_TYPE
+IMM[15] <= IMM~0.DB_MAX_OUTPUT_PORT_TYPE
 RAA[0] <= RAA~2.DB_MAX_OUTPUT_PORT_TYPE
 RAA[1] <= RAA~1.DB_MAX_OUTPUT_PORT_TYPE
 RAA[2] <= RAA~0.DB_MAX_OUTPUT_PORT_TYPE
@@ -63,15 +79,15 @@ WrB[0] <= WrB~1.DB_MAX_OUTPUT_PORT_TYPE
 WrB[1] <= WrB~0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|DoAn|RRI:inst8
+|DoAn|RRI:inst28
 REA <= inst.DB_MAX_OUTPUT_PORT_TYPE
-I[0] => ~NO_FANOUT~
-I[1] => ~NO_FANOUT~
-I[2] => ~NO_FANOUT~
-I[3] => ~NO_FANOUT~
-I[4] => ~NO_FANOUT~
-I[5] => ~NO_FANOUT~
-I[6] => ~NO_FANOUT~
+I[0] => extend7to16:inst1.input[0]
+I[1] => extend7to16:inst1.input[1]
+I[2] => extend7to16:inst1.input[2]
+I[3] => extend7to16:inst1.input[3]
+I[4] => extend7to16:inst1.input[4]
+I[5] => extend7to16:inst1.input[5]
+I[6] => extend7to16:inst1.input[6]
 I[7] => RAB[0].DATAIN
 I[7] => WA[0].DATAIN
 I[8] => RAB[1].DATAIN
@@ -115,6 +131,22 @@ jpnz <= I[15].DB_MAX_OUTPUT_PORT_TYPE
 ALUO[0] <= inst23[0].DB_MAX_OUTPUT_PORT_TYPE
 ALUO[1] <= inst11.DB_MAX_OUTPUT_PORT_TYPE
 ALUO[2] <= inst23[1].DB_MAX_OUTPUT_PORT_TYPE
+IMM_EXTEND[0] <= extend7to16:inst1.output[0]
+IMM_EXTEND[1] <= extend7to16:inst1.output[1]
+IMM_EXTEND[2] <= extend7to16:inst1.output[2]
+IMM_EXTEND[3] <= extend7to16:inst1.output[3]
+IMM_EXTEND[4] <= extend7to16:inst1.output[4]
+IMM_EXTEND[5] <= extend7to16:inst1.output[5]
+IMM_EXTEND[6] <= extend7to16:inst1.output[6]
+IMM_EXTEND[7] <= extend7to16:inst1.output[7]
+IMM_EXTEND[8] <= extend7to16:inst1.output[8]
+IMM_EXTEND[9] <= extend7to16:inst1.output[9]
+IMM_EXTEND[10] <= extend7to16:inst1.output[10]
+IMM_EXTEND[11] <= extend7to16:inst1.output[11]
+IMM_EXTEND[12] <= extend7to16:inst1.output[12]
+IMM_EXTEND[13] <= extend7to16:inst1.output[13]
+IMM_EXTEND[14] <= extend7to16:inst1.output[14]
+IMM_EXTEND[15] <= extend7to16:inst1.output[15]
 RAA[0] <= I[10].DB_MAX_OUTPUT_PORT_TYPE
 RAA[1] <= I[11].DB_MAX_OUTPUT_PORT_TYPE
 RAA[2] <= I[12].DB_MAX_OUTPUT_PORT_TYPE
@@ -131,18 +163,68 @@ WrB[0] <= inst20[0].DB_MAX_OUTPUT_PORT_TYPE
 WrB[1] <= inst20[1].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|DoAn|RI:inst9
+|DoAn|RRI:inst28|extend7to16:inst1
+output[0] <= input[0].DB_MAX_OUTPUT_PORT_TYPE
+output[1] <= input[1].DB_MAX_OUTPUT_PORT_TYPE
+output[2] <= input[2].DB_MAX_OUTPUT_PORT_TYPE
+output[3] <= input[3].DB_MAX_OUTPUT_PORT_TYPE
+output[4] <= input[4].DB_MAX_OUTPUT_PORT_TYPE
+output[5] <= input[5].DB_MAX_OUTPUT_PORT_TYPE
+output[6] <= input[6].DB_MAX_OUTPUT_PORT_TYPE
+output[7] <= lpm_constant0:inst.result[0]
+output[8] <= lpm_constant0:inst.result[1]
+output[9] <= lpm_constant0:inst.result[2]
+output[10] <= lpm_constant0:inst.result[3]
+output[11] <= lpm_constant0:inst.result[4]
+output[12] <= lpm_constant0:inst.result[5]
+output[13] <= lpm_constant0:inst.result[6]
+output[14] <= lpm_constant0:inst.result[7]
+output[15] <= lpm_constant0:inst.result[8]
+input[0] => output[0].DATAIN
+input[1] => output[1].DATAIN
+input[2] => output[2].DATAIN
+input[3] => output[3].DATAIN
+input[4] => output[4].DATAIN
+input[5] => output[5].DATAIN
+input[6] => output[6].DATAIN
+
+
+|DoAn|RRI:inst28|extend7to16:inst1|lpm_constant0:inst
+result[0] <= lpm_constant:LPM_CONSTANT_component.result[0]
+result[1] <= lpm_constant:LPM_CONSTANT_component.result[1]
+result[2] <= lpm_constant:LPM_CONSTANT_component.result[2]
+result[3] <= lpm_constant:LPM_CONSTANT_component.result[3]
+result[4] <= lpm_constant:LPM_CONSTANT_component.result[4]
+result[5] <= lpm_constant:LPM_CONSTANT_component.result[5]
+result[6] <= lpm_constant:LPM_CONSTANT_component.result[6]
+result[7] <= lpm_constant:LPM_CONSTANT_component.result[7]
+result[8] <= lpm_constant:LPM_CONSTANT_component.result[8]
+
+
+|DoAn|RRI:inst28|extend7to16:inst1|lpm_constant0:inst|lpm_constant:LPM_CONSTANT_component
+result[0] <= <GND>
+result[1] <= <GND>
+result[2] <= <GND>
+result[3] <= <GND>
+result[4] <= <GND>
+result[5] <= <GND>
+result[6] <= <GND>
+result[7] <= <GND>
+result[8] <= <GND>
+
+
+|DoAn|RI:inst38
 REA <= inst4.DB_MAX_OUTPUT_PORT_TYPE
-I[0] => ~NO_FANOUT~
-I[1] => ~NO_FANOUT~
-I[2] => ~NO_FANOUT~
-I[3] => ~NO_FANOUT~
-I[4] => ~NO_FANOUT~
-I[5] => ~NO_FANOUT~
-I[6] => ~NO_FANOUT~
-I[7] => ~NO_FANOUT~
-I[8] => ~NO_FANOUT~
-I[9] => ~NO_FANOUT~
+I[0] => extend10to16:inst1.input[0]
+I[1] => extend10to16:inst1.input[1]
+I[2] => extend10to16:inst1.input[2]
+I[3] => extend10to16:inst1.input[3]
+I[4] => extend10to16:inst1.input[4]
+I[5] => extend10to16:inst1.input[5]
+I[6] => extend10to16:inst1.input[6]
+I[7] => extend10to16:inst1.input[7]
+I[8] => extend10to16:inst1.input[8]
+I[9] => extend10to16:inst1.input[9]
 I[10] => RAA[0].DATAIN
 I[10] => RAB[0].DATAIN
 I[10] => WA[0].DATAIN
@@ -184,6 +266,22 @@ jpnz <= inst20.DB_MAX_OUTPUT_PORT_TYPE
 ALUO[0] <= inst18.DB_MAX_OUTPUT_PORT_TYPE
 ALUO[1] <= inst17.DB_MAX_OUTPUT_PORT_TYPE
 ALUO[2] <= inst14.DB_MAX_OUTPUT_PORT_TYPE
+IMM_EXTEND[0] <= extend10to16:inst1.output[0]
+IMM_EXTEND[1] <= extend10to16:inst1.output[1]
+IMM_EXTEND[2] <= extend10to16:inst1.output[2]
+IMM_EXTEND[3] <= extend10to16:inst1.output[3]
+IMM_EXTEND[4] <= extend10to16:inst1.output[4]
+IMM_EXTEND[5] <= extend10to16:inst1.output[5]
+IMM_EXTEND[6] <= extend10to16:inst1.output[6]
+IMM_EXTEND[7] <= extend10to16:inst1.output[7]
+IMM_EXTEND[8] <= extend10to16:inst1.output[8]
+IMM_EXTEND[9] <= extend10to16:inst1.output[9]
+IMM_EXTEND[10] <= extend10to16:inst1.output[10]
+IMM_EXTEND[11] <= extend10to16:inst1.output[11]
+IMM_EXTEND[12] <= extend10to16:inst1.output[12]
+IMM_EXTEND[13] <= extend10to16:inst1.output[13]
+IMM_EXTEND[14] <= extend10to16:inst1.output[14]
+IMM_EXTEND[15] <= extend10to16:inst1.output[15]
 RAA[0] <= I[10].DB_MAX_OUTPUT_PORT_TYPE
 RAA[1] <= I[11].DB_MAX_OUTPUT_PORT_TYPE
 RAA[2] <= I[12].DB_MAX_OUTPUT_PORT_TYPE
@@ -198,6 +296,35 @@ WA[1] <= I[11].DB_MAX_OUTPUT_PORT_TYPE
 WA[2] <= I[12].DB_MAX_OUTPUT_PORT_TYPE
 WrB[0] <= inst27.DB_MAX_OUTPUT_PORT_TYPE
 WrB[1] <= inst24.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DoAn|RI:inst38|extend10to16:inst1
+output[0] <= input[0].DB_MAX_OUTPUT_PORT_TYPE
+output[1] <= input[1].DB_MAX_OUTPUT_PORT_TYPE
+output[2] <= input[2].DB_MAX_OUTPUT_PORT_TYPE
+output[3] <= input[3].DB_MAX_OUTPUT_PORT_TYPE
+output[4] <= input[4].DB_MAX_OUTPUT_PORT_TYPE
+output[5] <= input[5].DB_MAX_OUTPUT_PORT_TYPE
+output[6] <= input[6].DB_MAX_OUTPUT_PORT_TYPE
+output[7] <= input[7].DB_MAX_OUTPUT_PORT_TYPE
+output[8] <= input[8].DB_MAX_OUTPUT_PORT_TYPE
+output[9] <= input[9].DB_MAX_OUTPUT_PORT_TYPE
+output[10] <= <GND>
+output[11] <= <GND>
+output[12] <= <GND>
+output[13] <= <GND>
+output[14] <= <GND>
+output[15] <= <GND>
+input[0] => output[0].DATAIN
+input[1] => output[1].DATAIN
+input[2] => output[2].DATAIN
+input[3] => output[3].DATAIN
+input[4] => output[4].DATAIN
+input[5] => output[5].DATAIN
+input[6] => output[6].DATAIN
+input[7] => output[7].DATAIN
+input[8] => output[8].DATAIN
+input[9] => output[9].DATAIN
 
 
 |DoAn|RRR:inst11
